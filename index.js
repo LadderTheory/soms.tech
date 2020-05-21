@@ -1,2 +1,17 @@
-h = 27
-console.log(h)
+const express = require('express');
+const app = express();
+const { readFile } = require('fs').promises;
+
+app.get('/', async (request, response) => {
+
+    response.redirect('https://github.com/SomsTech');
+
+});
+
+app.get('/tyler', async (request, response) => {
+
+    response.send( await readFile('./home.html', 'utf8'));
+
+});
+
+app.listen(process.env.PORT || 1337, () => console.log("App available on http://localhost:1337"));
